@@ -1,4 +1,6 @@
 import requests,json,base64
+# Requests is an Apache2 Licensed HTTP library, written in Python, for human beings.
+# by @kennethreitz
 class Authwrapper(object):
     def __init__(self,client_id,client_secret,note):
         self.ClientId = client_id
