@@ -2,6 +2,7 @@ import requests,json
 import follow
 import stargazers
 import events
+import notifs
 
 class octoAPy(object):
     
@@ -38,3 +39,7 @@ class octoAPy(object):
             return e.get_events(self.TokenBearer['login'])
         else:
             return e.get_events(username)
+            
+    def notif_driver(self):
+        n = notifs.notifAPI(self.AccessToken)
+        return n.get_notifs()
