@@ -25,3 +25,7 @@ class octoAPy(object):
             return f.get_following(self.TokenBearer['login'])
         else:
             return f.get_following(username)
+            
+    def stargazer_driver(self,RepoOwner,RepoName):
+        s = stargazers.starAPI(self.AccessToken)
+        return s.get_stargazers(RepoOwner,RepoName)
