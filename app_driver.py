@@ -43,3 +43,7 @@ class octoAPy(object):
     def notif_driver(self):
         n = notifs.notifAPI(self.AccessToken)
         return n.get_notifs()
+        
+    def reponotif_driver(self,RepoOwner,RepoName):
+        n = notifs.notifAPI(self.AccessToken)
+        return n.repo_notif(RepoOwner,RepoName)
