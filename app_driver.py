@@ -1,6 +1,7 @@
 import requests,json
 import follow
 import stargazers
+import events
 
 class octoAPy(object):
     
@@ -30,3 +31,10 @@ class octoAPy(object):
     def stargazer_driver(self,RepoOwner,RepoName):
         s = stargazers.starAPI(self.AccessToken)
         return s.get_stargazers(RepoOwner,RepoName)
+        
+    def event_driver(self,username = None):
+        e = events.eventsAPI(self.AccessToken)
+        if username is None:
+            return e.get_events(self.TokenBearer['login'])
+        else:
+            return e.get_events(username)
