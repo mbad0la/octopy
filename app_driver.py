@@ -1,5 +1,6 @@
 import requests,json
 import follow
+import stargazers
 
 class octoAPy(object):
     
