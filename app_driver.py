@@ -55,3 +55,7 @@ class octoAPy(object):
     def trending_driver(self):
         srch = search.searchAPI(self.AccessToken)
         return srch.trending_repos()
+        
+    def star_driver(self,RepoOwner,RepoName):
+        s = stargazers.starAPI(self.AccessToken)
+        return s.star_it(RepoOwner,RepoName)
