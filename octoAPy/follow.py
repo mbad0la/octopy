@@ -1,4 +1,5 @@
-import requests,json
+"""
+Under work
 
 class followAPI(object):
 
@@ -24,3 +25,4 @@ class followAPI(object):
         headers={'Authorization':'token '+self.AccessToken,'Accept':'application/json','Content-Type':'application/json'}
         r = requests.get('https://api.github.com/users/'+username+'/following',headers=headers)
         return json.dumps(r.text)
+"""

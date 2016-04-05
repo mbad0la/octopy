@@ -1,9 +1,9 @@
 from endpoints import build_call
-import follow
-import stargazers
-import events
-import notifs
-import search
+# import follow
+from stargazers import starAPI
+from events import eventsAPI
+# import notifs
+# import search
 
 class octoAPy(object):
 
@@ -24,3 +24,28 @@ class octoAPy(object):
                 return self.authstring
             except:
                 return "You already have a token corresponding to this app!"
+
+    def me(self):
+        return self.authbearer
+
+    def feed_for(self, entity = None, isorg = False):
+        e = eventsAPI(self.authbearer["login"], self.authstring, self.istoken)
+        if entity is not None:
+            return e.get_feed(entity, isorg)
+        else:
+            if not isorg:
+                return e.get_feed(self.authbearer["login"], False)
+            else:
+                return "Please set an organisation name to look for!"
+
+    def stargazers_for(self, owner, repo):
+        s = starAPI(self.authbearer["login"], self.authstring, self.istoken)
+        return s.get_stargazers(owner, repo)
+
+    def star(self, owner, repo):
+        s = starAPI(self.authbearer["login"], self.authstring, self.istoken)
+        return s.star_it(owner, repo)
+
+    def unstar(self, owner, repo):
+        s = starAPI(self.authbearer["login"], self.authstring, self.istoken)
+        return s.unstar_it(owner, repo)
