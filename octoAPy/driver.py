@@ -1,5 +1,5 @@
 from endpoints import build_call
-# import follow
+from follow import followAPI
 from stargazers import starAPI
 from events import eventsAPI
 # import notifs
@@ -49,3 +49,17 @@ class octoAPy(object):
     def unstar(self, owner, repo):
         s = starAPI(self.authbearer["login"], self.authstring, self.istoken)
         return s.unstar_it(owner, repo)
+
+    def followers(self, username = None):
+        f = followAPI(self.authbearer["login"], self.authstring, self.istoken)
+        if username is None:
+            return f.my_followers()
+        else:
+            return f.get_followers(username)
+
+    def following(self, username = None):
+        f = followAPI(self.authbearer["login"], self.authstring, self.istoken)
+        if username is None:
+            return f.my_following()
+        else:
+            return f.get_following(username)
