@@ -2,7 +2,7 @@ from endpoints import build_call
 from follow import followAPI
 from stargazers import starAPI
 from events import eventsAPI
-# import notifs
+from notifs import notifAPI
 # import search
 
 class octoAPy(object):
@@ -63,3 +63,12 @@ class octoAPy(object):
             return f.my_following()
         else:
             return f.get_following(username)
+
+    def notification(self, owner = None, repo = None):
+        n = notifAPI(self.authbearer["login"], self.authstring, self.istoken)
+        if owner is None and repo is None:
+            return n.get_notifs()
+        elif owner is not None and repo is not None:
+            return n.repo_notif(owner, repo)
+        else:
+            return "illegal method arguments..."
