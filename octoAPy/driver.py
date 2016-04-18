@@ -3,7 +3,7 @@ from follow import followAPI
 from stargazers import starAPI
 from events import eventsAPI
 from notifs import notifAPI
-# import search
+from search import searchAPI
 
 class octoAPy(object):
 
@@ -71,4 +71,14 @@ class octoAPy(object):
         elif owner is not None and repo is not None:
             return n.repo_notif(owner, repo)
         else:
-            return "illegal method arguments..."
+            return "[Missing Arguments]"
+
+    def trend(self, days = 10, sort = "stars"):
+        s = searchAPI(self.authbearer["login"], self.authstring, self.istoken)
+        try:
+            if sort == "stars" and int(days) > 0:
+                return s.new_trending(days)
+            else:
+                return "[Second Argument Invalid]"
+        except ValueError:
+            return "[First Argument should be a Positive Integer]"
