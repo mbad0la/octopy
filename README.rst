@@ -10,8 +10,8 @@ Let's start!
 
 .. code-block:: python
 
-    >>> from octoAPy import octoAPy
-    >>> apiobj = octoAPy("mbad0la","$password")
+    >>> from octopy import octopy
+    >>> apiobj = octopy("mbad0la","$password")
     >>> apiobj.me()
     {u'disk_usage': 11046, u'private_gists': 0, u'public_repos': 34, ...}
 

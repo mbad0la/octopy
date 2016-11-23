@@ -5,15 +5,15 @@ from events import eventsAPI
 from notifs import notifAPI
 from search import searchAPI
 
-class octoAPy(object):
+class octopy(object):
 
     def __init__(self, username, authstring, token = False):
         self.authstring = authstring
         self.istoken = token
         self.authbearer = build_call("get", "user", username, authstring, {}, token)
 
-    def get_token(self, clientid, clientsecret):
-        options = { 'note': "get-me-token", 'client_id': clientid,'client_secret': clientsecret,'fingerprint': self.authbearer["login"], 'scopes': []}
+    def get_token(self, clientid, clientsecret, scopes = []):
+        options = { 'note': "get-me-token", 'client_id': clientid,'client_secret': clientsecret,'fingerprint': self.authbearer["login"], 'scopes': scopes}
         if self.istoken:
             return self.authstring
         else:
